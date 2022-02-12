@@ -33,7 +33,7 @@ export class FrontDoorComponent implements OnInit {
         }
       });
   }
-  getEmptyCart() {
+  public getEmptyCart(): void {
     this.store.dispatch(
       shoppingAction.initializeCartAndListCartInit({
         cartRef: this.getCustomerDetails.cartRef,
@@ -42,7 +42,7 @@ export class FrontDoorComponent implements OnInit {
     );
     this.router.navigate(['/store']);
   }
-  onPreviousCart(){
+  public onPreviousCart(): void {
     this.router.navigate(['/store']);
   }
   OnDestroy() {

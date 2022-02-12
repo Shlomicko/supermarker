@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoryComponent } from './component/shopStore/category/category.component';
 
-import { RegistrationComponent } from './component/userAuth/registration/registration.component';
+import { RegistrationComponent } from './component/auth/registration/registration.component';
 import { HomePageComponent } from './component/home-page/home-page.component';
 import { FrontDoorComponent } from './component/front-door/front-door.component';
 

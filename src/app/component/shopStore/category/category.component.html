@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-3">
+
+    <app-navbarcart></app-navbarcart>
+    <app-form-edit></app-form-edit>
+  </div>
+  <div class="col-8">
+
+
+    <nav *ngIf="!product.value" mat-tab-nav-bar>
+      <p mat-tab-link *ngFor="let c of categories$|async " routerLink="/store/category/{{c._id}}"
+        routerLinkActive="link">
+        {{c.nameCategory}}
+      </p>
+      <form (ngSubmit)="SearchProductByName(product.value)">
+        <mat-form-field appearance="standard">
+
+          <input matInput name="product" #product placeholder="Search Product">
+
+
+        </mat-form-field>
+        <button type="submit">submit</button>
+      </form>
+
+    </nav>
+    <app-products>
+    </app-products>
+  </div>
+</div>

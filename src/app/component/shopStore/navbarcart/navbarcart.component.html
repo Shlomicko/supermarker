@@ -1,0 +1,58 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-2">
+      <div class="col-10" *ngIf="!cartRef">
+        <button mat-icon-button (click)="deleteAllTrollyItems(cartRef)">
+          <mat-icon>delete_outline</mat-icon> <span>delete all items</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <mat-card style="max-height: 200px;" *ngFor="let trollyItem of trollyItems | async" class="col-12"
+      id="button-delete">
+
+      <div class="col-1">
+        <button mat-icon-button (click)="deleteTrollyItem(trollyItem.id)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <mat-card-title-group>
+        <mat-card-title>{{trollyItem.name}}</mat-card-title>
+        {{trollyItem.quantity }}*{{trollyItem.price}} = {{trollyItem.totalPrice}}
+        <mat-card-subtitle> <img mat-card-sm-image src={{trollyItem.imgUrl}}>
+          <form (ngSubmit)="handelChangeAmount(trollyItem,trollyItem.id,valueAmount.value)">
+            <input type="number" #valueAmount>
+            <button type="submit">change</button>
+          </form>
+
+        </mat-card-subtitle>
+
+      </mat-card-title-group>
+      <mat-card-content>
+
+
+      </mat-card-content>
+
+
+
+
+    </mat-card>
+
+  </div>
+
+</div>
+
+<!-- <ng-container *ngIf="itemsForm !== null">
+  <div [formGroup]="itemsForm">
+    <ng-container formArrayName="items">
+      <ng-container *ngFor="let item of items.controls">
+        <div formArrayName="controls.id">
+          ID: {{item.controls.id.value}}
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-container> -->

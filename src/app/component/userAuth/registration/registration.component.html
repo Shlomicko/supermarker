@@ -1,0 +1,101 @@
+
+
+<mat-stepper [linear]="true" #stepper>
+
+  <mat-step [stepControl]="checkRegisterForm">
+    <form [formGroup]="checkRegisterForm" (ngSubmit)="checkBeforeRegisterNewUser()">
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Id Card</mat-label>
+          <input formGroupName="idCard" formControlName="idCard" matInput placeholder="Id Card" />
+          <mat-error *ngIf="f['idCard'].hasError('required')">Id card Required</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Email address</mat-label>
+          <input formControlName="email" matInput placeholder="pat@example.com" />
+          <mat-error *ngIf="f['email'].hasError('required')">email Required</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Enter your password</mat-label>
+          <input formControlName="password" matInput type="password" />
+
+          <mat-error *ngIf="f['password']?.errors">Password is required.</mat-error>
+
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Confirm password</mat-label>
+          <input formControlName="confirmPassword" matInput type="password" />
+
+          <mat-error *ngIf="f['confirmPassword'].hasError('required')">Password is required.</mat-error>
+          <mat-error *ngIf="f['confirmPassword']?.hasError('confirmedValidator')">Password and Confirm Password must be
+            match.</mat-error>
+        </mat-form-field>
+      </p>
+
+      <button mat-fab mat-fab type="submit">Next</button>
+    </form>
+  </mat-step>
+
+
+
+
+
+  <mat-step [stepControl]="finalRegisterForm" label="Fill out your address">
+    <form [formGroup]="finalRegisterForm">
+      <h1>More Details</h1>
+
+      <mat-form-field appearance="standard">
+        <mat-label>City</mat-label>
+        <mat-select formGroupName="city" formControlName="city">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let c of cities | async" [value]="c">{{
+              c
+            }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>address</mat-label>
+          <input formControlName="address" formGroupName="address" matInput placeholder="address" />
+          <!-- <mat-error *ngIf="email?.invalid">{{getErrorMessageEmail()}}</mat-error> -->
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>First Name</mat-label>
+          <input formControlName="firstName"  matInput placeholder="First Name" />
+          <!-- <mat-error *ngIf="email?.invalid">{{getErrorMessageEmail()}}</mat-error> -->
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Last Name</mat-label>
+          <input formControlName="lastName" formGroupName="lastName" matInput placeholder="Last Name" />
+          <!-- <mat-error *ngIf="email?.invalid">{{getErrorMessageEmail()}}</mat-error> -->
+        </mat-form-field>
+      </p>
+      <button mat-button (click)="stepper.next()">Next</button>
+
+    </form>
+  </mat-step>
+  <mat-step>
+    <form (ngSubmit)="registerFormContinue()">
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+
+        <button mat-fab mat-fab routerLink="." type="submit">Sing Up</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-stepper>

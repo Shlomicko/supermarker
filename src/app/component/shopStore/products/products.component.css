@@ -1,0 +1,19 @@
+.item {
+  background: #f0f5f538;
+  padding: 25px;
+  padding-left: 50px;
+  margin-bottom: 25px;
+  margin-left: 5px;
+  text-align: start
+}
+
+.item:hover {
+  border: 1px solid #00ffff38;
+  text-align: start
+}
+
+img {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 20px;
+}

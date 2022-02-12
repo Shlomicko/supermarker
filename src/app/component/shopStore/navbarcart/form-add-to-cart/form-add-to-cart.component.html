@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>{{product.name}}</h2>
+<div mat-dialog-content>
+<h1></h1>
+
+
+</div>
+
+
+<mat-form-field appearance="standard">
+  <mat-dialog-content>
+    <mat-icon (click)="increment()">add_circle_outline</mat-icon>
+    <mat-form-field appearance="outline">        
+        <input min="1" matInput type="number" [(ngModel)]="amountControl" readonly>
+    </mat-form-field>
+    <mat-icon (click)="decrement()" >remove_circle_outline</mat-icon>  
+</mat-dialog-content>
+
+</mat-form-field>
+
+
+
+
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false">Cancel</button>
+  <button mat-button [mat-dialog-close]="false" (click)="save(product)">Add</button>
+</mat-dialog-actions>

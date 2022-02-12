@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <mat-card class="col-md-4 item col-12" *ngFor="let product of products$  ;let i = index; "  role="group" id=i>
+    
+      <div >
+        
+        <div class="row align-items-start">
+          <div class="col-8">
+
+            <mat-card-title-group>
+              <app-manager-options *ngIf="infoAuth$" [product]="product"></app-manager-options>
+
+
+              <img mat-card-sm-image src="{{product.imgUrl}}">
+            </mat-card-title-group>
+          </div>
+        </div>
+
+
+        <div class="row justify-content-between">
+          <div class="col-8">
+            <mat-card-content>
+              <strong>
+                {{product.description}}
+              </strong>
+              price:{{product.price|currency}}
+            </mat-card-content>
+          </div>
+          <div class="col-4">
+
+            <mat-card-actions>
+
+              <button mat-icon-button (click)="openDialog(product)">
+                <mat-icon>add_shopping_cart</mat-icon>
+              </button>
+              {{product.quantity}}
+            </mat-card-actions>
+          </div>
+        </div>
+
+
+      </div>
+  
+    </mat-card>
+
+  </div>
+
+
+
+
+</div>

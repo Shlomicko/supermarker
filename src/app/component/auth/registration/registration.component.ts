@@ -7,7 +7,6 @@ import { MatStepper } from '@angular/material/stepper';
 
 import { Store } from '@ngrx/store';
 import * as userRegistrationAction from '../../../state/actions/user.actions';
-import { IUser } from '../../../../../../Share/users';
 import * as shoppingAction from '../../../state/actions/shopping.actions';
 
 import { Subscription } from 'rxjs';
